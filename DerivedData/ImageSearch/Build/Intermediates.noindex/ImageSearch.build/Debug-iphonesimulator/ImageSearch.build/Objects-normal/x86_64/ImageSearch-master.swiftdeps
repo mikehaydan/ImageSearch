@@ -1,0 +1,5 @@
+version: "Apple Swift version 4.1.2 (swiftlang-902.0.54 clang-902.0.39.2)"
+options: "ef50344558f77e289ba34e2c39e4adfc"
+build_time: [1528535376, 914440000]
+inputs:
+  "/Users/mikehaydan/Desktop/Projects/ImageSearch/ImageSearch/Supporting Files/AppDelegate.swift": [1528534832, 0]
