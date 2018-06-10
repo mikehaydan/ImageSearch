@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum CropDownloaderGatewayConstants {
+    static let cropIdentifier: String = "crop_"
+}
+
 protocol CropDownloaderGateway: DownloaderGateway {
     
 }
@@ -44,4 +48,11 @@ final class CropDownloaderImplementation: DownloaderGatewayImplementation {
         })
     }
     
+    override func imageNameFrom(url: String) -> String? {
+        if let name = super.imageNameFrom(url: url) {
+            return CropDownloaderGatewayConstants.cropIdentifier + name
+        } else {
+            return nil
+        }
+    }
 }

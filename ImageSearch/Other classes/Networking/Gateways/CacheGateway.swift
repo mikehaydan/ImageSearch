@@ -94,7 +94,7 @@ final class CacheGatewayImplementation: CacheGateway {
     // MARK: - Public
     
     func downloadImageBy(urlString: String, dataTaskHandler: ((URLSessionDataTask?) -> ())? = nil, completion: @escaping ImageDownloadCompletion) {
-        if let imageName = URL(string: urlString)?.absoluteString.replacingOccurrences(of: "/", with: "_") {
+        if let imageName = downloader.imageNameFrom(url: urlString) {
             queue.async { [weak self] in
                 guard let strongSelf = self else {
                     return

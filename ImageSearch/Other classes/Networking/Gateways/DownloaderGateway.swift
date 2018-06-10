@@ -14,6 +14,13 @@ protocol DownloaderGateway: class {
     func downloadImageBy(urlString: String, dataTaskHandler: ((URLSessionDataTask?) -> ())?, completion: @escaping ImageDownloadCompletion)
     func downloadImageBy(urlString: String, completion: @escaping ImageDownloadCompletion)
     func cancelDownload()
+    func imageNameFrom(url: String) -> String?
+}
+
+extension DownloaderGateway {
+    func imageNameFrom(url: String) -> String? {
+        return nil
+    }
 }
 
 // MARK: - DownloadedImage
@@ -68,5 +75,9 @@ class DownloaderGatewayImplementation: DownloaderGateway {
     
     func cancelDownload() {
         apiClient.cancelTasks()
+    }
+    
+    func imageNameFrom(url: String) -> String? {
+        return URL(string: url)?.absoluteString.replacingOccurrences(of: "/", with: "_")
     }
 }
