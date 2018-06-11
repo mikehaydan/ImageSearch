@@ -13,8 +13,8 @@ struct ImageSearchApiModel: InitializableCodable {
     let response: [SearchResponse]
     
     var searchModel: [ImageSearchModel] {
-        let result = response.reduce([]) { (models, object) -> [ImageSearchModel] in
-            let nextModels = object.photos?.compactMap({ ImageSearchModel(imageUrl: $0.originalSize.url, size: CGSize(width: $0.originalSize.width, height: $0.originalSize.height), description: $0.caption) }) ?? []
+        let result = response.reduce([]) { (models, nextElement) -> [ImageSearchModel] in
+            let nextModels = nextElement.photos?.compactMap({ ImageSearchModel(imageUrl: $0.originalSize.url, size: CGSize(width: $0.originalSize.width, height: $0.originalSize.height), description: $0.caption) }) ?? []
             return models + nextModels
         }
         return result
